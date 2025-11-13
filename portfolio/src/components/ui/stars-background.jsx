@@ -113,7 +113,7 @@ export const StarsBackground = ({ className }) => {
       const time = Date.now();
 
       //  NEBULA — static, slow opacity pulse (no movement)
-      if (nebula) {
+      if (nebula && canvas.width >= 1024) {
         nebulaAlpha.current =
           0.06 + Math.sin(time * NEBULA_PULSE_SPEED) * 0.01;
         // base 0.06, +/- 0.03 variation

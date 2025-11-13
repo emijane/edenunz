@@ -18,7 +18,7 @@ export default function ExperienceSection() {
                 <ExperienceBlock
                     company="emagine"
                     date="2022 - 2025"
-                    role="Frontend Developer"
+                    role="Frontend Developer Associate"
                     description="Built responsive, pixel-perfect websites with HTML, CSS, and JavaScript. Created reusable UI components and optimized build processes for performance. Ensured accessibility, cross-browser support, and mobile-first design."
                 />
                 <ExperienceBlock
