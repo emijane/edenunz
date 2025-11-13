@@ -8,44 +8,42 @@ export default function ProfileCard() {
 
             {/* Soft outer glow */}
             <div className="absolute inset-0 rounded-3xl blur-3xl 
-                            bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-blue-500/10 
+                            bg-linear-to-r from-pink-500/10 via-purple-500/10 to-blue-500/10 
                             opacity-50 pointer-events-none"></div>
 
             {/* Main card container */}
-            <div className="relative z-10 w-full max-w-xl 
+            <div className="relative z-10 w-full max-w-xl px-10
                             bg-black/30 backdrop-blur-md 
                             border border-white/10 rounded-3xl
-                            shadow-[0_0_25px_rgba(255,255,255,0.15)]
-                            p-6 flex flex-col gap-6">
+                            shadow-[0_0_25px_rgba(255,255,255,0.15)] flex flex-col py-8">
 
                 {/* Top: Avatar + Text */}
-                <div className="flex flex-row items-center gap-6">
+                <div className="flex flex-row items-center gap-7">
                     <img 
                         src={icon}
                         alt="Icon"
-                        className="w-24 lg:w-28 rounded-full 
-                                   shadow-[0_0_40px_rgba(255,200,255,0.3)]"
+                        className="w-24 lg:w-28 rounded-full"
                     />
 
                     <div className="text-left">
                         <div className="flex items-center gap-2">
-                            <h1 className="text-xl lg:text-2xl font-semibold 
+                            <h1 className="text-xl font-semibold 
                                            text-white tracking-wide 
                                            drop-shadow-[0_0_6px_rgba(255,255,255,0.5)]">
                                 Emma DeNunzio
                             </h1>
-                            <span className="text-pink-300 animate-sparkle text-sm">✦</span>
+                            <span className="text-pink-300 animate-sparkle text-xs">✦</span>
                         </div>
 
-                        <p className="text-sm text-pink-200/80 mt-1 tracking-wide">
-                            Jr Frontend Developer <span className="text-white/40">|</span> CS @ UF
+                        <p className="text-xs text-pink-200/80 tracking-wide">
+                            Jr Frontend Developer
                         </p>
 
-                        <div className="flex flex-row gap-3 mt-2">
+                        <div className="flex flex-row gap-3 mt-3">
                             {[Linkedin, Instagram, Github, Mail].map((Icon, i) => (
                                 <Icon 
                                     key={i}
-                                    className="text-white/60 w-5 h-5 
+                                    className="text-white/60 w-4 h-4 
                                                hover:text-white hover:scale-110 
                                                transition-all duration-300 cursor-pointer"
                                 />

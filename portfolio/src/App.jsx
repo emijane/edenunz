@@ -23,9 +23,9 @@ function App() {
                     </div>
 
                     <div className="max-w-230">
-                        <ExperienceSection />
-                        <ProjectsSection />
-                        <EducationSection />
+                      <EducationSection />
+                      <ExperienceSection />
+                      <ProjectsSection />
                     </div>
                 </div>
             </div>
