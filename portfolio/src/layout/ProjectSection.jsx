@@ -7,8 +7,8 @@ export default function ProjectsSection() {
     return (
         <div className='flex flex-col gap-3 text-left p-6'>
             <div className="flex gap-3 items-center">
-                <CodeXml className="text-pink-200 w-5 h-5" />
-                <h2 className='text-xl lg:text-2xl text-white text-glow'>Projects</h2>
+                <CodeXml className="text-pink-200 w-5 h-5 drop-shadow-[0_0_5px_rgba(255,192,203,0.8)]" />
+                <h2 className='text-xl lg:text-2xl text-white'>Projects</h2>
             </div>
             <div className='flex flex-col gap-4 pl-7 border-l border-pink-200/20 ml-9'>
                 {/* Content blocks */}
