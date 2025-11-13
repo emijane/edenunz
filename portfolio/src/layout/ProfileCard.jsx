@@ -4,61 +4,93 @@ import SpotifyWidget from "../components/SpotifyWidget";
 
 export default function ProfileCard() {
     return (
-        <div className="relative">
+        <div className="relative w-full max-w-xl group">
 
-            {/* Soft outer glow */}
-            <div className="absolute inset-0 rounded-3xl blur-3xl 
-                            bg-linear-to-r from-pink-500/10 via-purple-500/10 to-blue-500/10 
-                            opacity-50 pointer-events-none"></div>
+            {/* Outer glow aura */}
+            <div className="
+                absolute inset-0 
+                rounded-3xl 
+                bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-blue-500/10
+                blur-2xl opacity-70 
+                group-hover:opacity-90
+                transition-all duration-700
+                pointer-events-none">
+            </div>
 
-            {/* Main card container */}
-            <div className="relative z-10 w-full max-w-xl px-10
-                            bg-black/30 backdrop-blur-md 
-                            border border-white/10 rounded-3xl
-                            shadow-[0_0_25px_rgba(255,255,255,0.15)] flex flex-col py-8">
+            {/* Extra subtle top highlight */}
+            <div className="
+                absolute inset-0 rounded-3xl
+                bg-white/5 blur-xl 
+                opacity-10
+                pointer-events-none">
+            </div>
 
-                {/* Top: Avatar + Text */}
+            {/* MAIN GLASS CARD */}
+            <div className="
+                relative z-10 
+                px-8 py-7 
+                rounded-3xl 
+                bg-white/5 
+                border border-pink-200/5
+                shadow-[0_0_10px_rgba(255,255,255,0.1)]
+                ring-1 ring-white/10
+                transition-all duration-500
+                group-hover:bg-pink-200/5
+                group-hover:shadow-[0_0_15px_rgba(255,255,255,0.17)]
+            ">
+
+                {/* AVATAR + TEXT */}
                 <div className="flex flex-row items-center gap-7">
                     <img 
                         src={icon}
                         alt="Icon"
-                        className="w-24 lg:w-28 rounded-full"
+                        className="w-24 lg:w-28 rounded-full shadow-[0_0_25px_rgba(255,255,255,0.18)]"
                     />
 
                     <div className="text-left">
                         <div className="flex items-center gap-2">
-                            <h1 className="text-xl font-semibold 
-                                           text-white tracking-wide 
-                                           drop-shadow-[0_0_6px_rgba(255,255,255,0.5)]">
+                            <h1 className="
+                                text-xl font-semibold text-white tracking-wide
+                                drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]
+                            ">
                                 Emma DeNunzio
                             </h1>
-                            <span className="text-pink-300 animate-sparkle text-xs">✦</span>
+
+                            {/* sparkle emoji glow */}
+                            <span className="text-pink-300 text-xs animate-pulse-slow">
+                                ✦
+                            </span>
                         </div>
 
-                        <p className="text-xs text-pink-200/80 tracking-wide">
-                            Jr Frontend Developer
+                        <p className="text-xs text-pink-200/80 tracking-wide mt-1">
+                            Jr Frontend Developer · CS @ UF
                         </p>
 
+                        {/* Social icons */}
                         <div className="flex flex-row gap-3 mt-3">
                             {[Linkedin, Instagram, Github, Mail].map((Icon, i) => (
-                                <Icon 
+                                <Icon
                                     key={i}
-                                    className="text-white/60 w-4 h-4 
-                                               hover:text-white hover:scale-110 
-                                               transition-all duration-300 cursor-pointer"
+                                    className="
+                                        text-white/70 w-4 h-4
+                                        transition-all duration-300 
+                                        hover:text-white
+                                        cursor-pointer
+                                        hover:scale-[1.18]
+                                        drop-shadow-[0_0_6px_rgba(255,255,255,0.3)]
+                                    "
                                 />
                             ))}
                         </div>
                     </div>
                 </div>
 
-                {/* Spotify inside the card */}
-                <div className="w-full">
+                {/* SPOTIFY PLAYER INSIDE CARD */}
+                <div className="w-full mt-6">
                     <SpotifyWidget />
                 </div>
 
             </div>
-
         </div>
     );
 }
