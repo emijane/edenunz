@@ -5,6 +5,7 @@ import ProjectsSection from './layout/ProjectSection';
 import ProfileCard from './layout/ProfileCard';
 import ExperienceSection from './layout/ExperienceSection';
 import SpotifyWidget from './components/SpotifyWidget';
+import SpotifyTest from './components/SpotifyTest';
 
 
 function App() {
@@ -12,8 +13,11 @@ function App() {
     <>
       <div className='flex gap-10 mt-10 justify-center items-center'>
         <div className='flex gap-10'>
-          <ProfileCard />
-          <SpotifyWidget />
+          <div className='flex flex-col justify-center'>
+            <ProfileCard />
+            <SpotifyTest/>
+            <SpotifyWidget />
+          </div>
           <div className='max-w-200'>
             <ExperienceSection />
             <ProjectsSection />
