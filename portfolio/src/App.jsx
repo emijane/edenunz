@@ -10,10 +10,12 @@ function App() {
   return (
     <>
       <div className='flex flex-col gap-10 mt-10 justify-center items-center'>
-        <div className='max-w-200'>
+        <div className='flex'>
           <ProfileCard />
-          <ExperienceSection />
-          <ProjectsSection />
+          <div className='max-w-200'>
+            <ExperienceSection />
+            <ProjectsSection />
+          </div>
         </div>
       </div>
     </>
