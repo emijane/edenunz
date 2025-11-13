@@ -5,7 +5,7 @@ import React from "react";
 export default function ProjectCard({ title, link, tech, description }) {
     return (
         <div className="flex flex-col gap-1">
-            <h3 className='hover:underline'>
+            <h3 className='text-lg hover:underline'>
                 {/* Link + Title for h3*/}
                 <a 
                 href={link} 

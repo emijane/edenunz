@@ -1,12 +1,16 @@
 {/* projects section */}
 
 import ProjectCard from "../components/ProjectCard";
+import { CodeXml } from "lucide-react";
 
 export default function ProjectsSection() {
     return (
         <div className='flex flex-col gap-3 text-left p-6'>
-            <h2 className='text-2xl text-white text-glow'>Projects</h2>
-            <div className='flex flex-col gap-4 pl-7 border-l border-pink-200/20'>
+            <div className="flex gap-3 items-center">
+                <CodeXml className="text-pink-200" />
+                <h2 className='text-2xl text-white text-glow'>Projects</h2>
+            </div>
+            <div className='flex flex-col gap-4 pl-7 border-l border-pink-200/20 ml-9'>
                 {/* Content blocks */}
                 <ProjectCard
                     title="StrataUI"

@@ -1,16 +1,20 @@
 {/* experience section */}
 
 import ExperienceBlock from "../components/ExperienceBlock";
+import { BadgeCheck } from "lucide-react";
 
 export default function ExperienceSection() {
     return (
         <div className="flex flex-col gap-3 text-left p-6 mx-auto">
-            <h2 className="text-2xl font-semibold text-white text-glow mb-2">
-                Experience
-            </h2>
+            <div className="flex gap-3 items-center">
+                <BadgeCheck className="text-pink-200" />
+                <h2 className="text-2xl font-semibold text-white text-glow">
+                    Experience
+                </h2>
+            </div>
 
             {/* Timeline container */}
-            <div className="relative flex flex-col gap-6 pl-7 border-l border-pink-200/20">
+            <div className="relative flex flex-col gap-6 pl-7 border-l border-pink-200/20 ml-9">
                 <ExperienceBlock
                     company="emagine"
                     date="2022 - 2025"
