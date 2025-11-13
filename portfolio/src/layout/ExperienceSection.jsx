@@ -7,8 +7,8 @@ export default function ExperienceSection() {
     return (
         <div className="flex flex-col gap-3 text-left p-6 mx-auto">
             <div className="flex gap-3 items-center">
-                <BadgeCheck className="text-pink-200" />
-                <h2 className="text-2xl font-semibold text-white text-glow">
+                <BadgeCheck className="text-pink-200 w-5 h-5" />
+                <h2 className="text-xl lg:text-2xl font-semibold text-white text-glow">
                     Experience
                 </h2>
             </div>
