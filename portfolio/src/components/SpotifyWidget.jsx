@@ -8,9 +8,7 @@ export default function SpotifyWidget() {
         const fetchSong = async () => {
             try {
                 const baseUrl =
-                    import.meta.env.DEV
-                        ? "https://edenunz.vercel.app"
-                        : "";
+                    import.meta.env.DEV ? "https://edenunz.vercel.app" : "";
                 const res = await fetch(`${baseUrl}/api/spotify`);
                 const data = await res.json();
                 setSong(data);
@@ -19,13 +17,29 @@ export default function SpotifyWidget() {
             }
         };
 
+        // initial fetch
         fetchSong();
-        const interval = setInterval(fetchSong, 5000);
-        return () => clearInterval(interval);
+
+        // refresh data from spotify every 8 seconds
+        const dataInterval = setInterval(fetchSong, 8000);
+
+        // update progress locally every 1 second
+        const progressInterval = setInterval(() => {
+            setSong((prev) => {
+                if (!prev || !prev.isPlaying) return prev;
+                const nextProgress = prev.progressMs + 1000;
+                if (nextProgress >= prev.durationMs) return prev; // prevent overflow
+                return { ...prev, progressMs: nextProgress };
+            });
+        }, 1000);
+
+        return () => {
+            clearInterval(dataInterval);
+            clearInterval(progressInterval);
+        };
     }, []);
 
     if (!song) return null;
-
     if (!song.isPlaying) {
         return (
             <div className="flex flex-col text-left gap-3 p-6 w-full">
@@ -39,7 +53,6 @@ export default function SpotifyWidget() {
         );
     }
 
-    // Format mm:ss safely
     const formatTime = (ms = 0) => {
         const totalSeconds = Math.floor(ms / 1000);
         const minutes = Math.floor(totalSeconds / 60);
@@ -53,13 +66,11 @@ export default function SpotifyWidget() {
 
     return (
         <div className="flex flex-col text-left gap-3 p-6 w-full">
-            {/* Header */}
             <div className="flex gap-3 items-center">
                 <Music className="text-pink-200 w-4 h-4 drop-shadow-[0_0_5px_rgba(255,192,203,0.8)]" />
                 <h3 className="text-sm text-white/80">Listening to:</h3>
             </div>
 
-            {/* Song info */}
             <div className="flex gap-4 items-center w-full">
                 <img
                     src={song.albumImageUrl}
@@ -77,7 +88,6 @@ export default function SpotifyWidget() {
                     </a>
                     <p className="text-xs text-white/60 truncate">{song.artist}</p>
 
-                    {/* Full-width glowing progress bar */}
                     <div className="mt-1 w-full">
                         <div className="flex justify-between text-[10px] text-white/40 mb-0.5">
                             <span>{formatTime(song.progressMs)}</span>
