@@ -6,8 +6,10 @@ export default function ExperienceBlock({ company, date, role, description }) {
     return (
         <div className="relative">
             {/* Header row */}
-            <div className="flex justify-between items-center">
-                <h3 className="text-md lg:text-lg font-semibold text-white mb-2">{company}</h3>
+            <div className="flex items-center gap-3">
+                <h3 className="text-md font-semibold text-white">
+                    {company} <span className="opacity-50">/</span>
+                </h3>
                 <p className="text-xs text-white/50">{date}</p>
             </div>
 

@@ -5,6 +5,7 @@ import ProjectsSection from './layout/ProjectSection';
 import ProfileCard from './layout/ProfileCard';
 import ExperienceSection from './layout/ExperienceSection';
 import SpotifyWidget from './components/SpotifyWidget';
+import EducationSection from './layout/EducationSection';
 import { StarsBackground } from './components/ui/stars-background';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
                     <div className="max-w-250">
                         <ExperienceSection />
                         <ProjectsSection />
+                        <EducationSection />
                     </div>
                 </div>
             </div>
