@@ -39,21 +39,23 @@ export default function SpotifyWidget() {
         );
     }
 
-    // Format time in mm:ss
-    const formatTime = (ms) => {
+    // Format mm:ss safely
+    const formatTime = (ms = 0) => {
         const totalSeconds = Math.floor(ms / 1000);
         const minutes = Math.floor(totalSeconds / 60);
         const seconds = totalSeconds % 60;
         return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
     };
 
-    const progressPercent = (song.progressMs / song.durationMs) * 100;
+    const progressPercent = song.durationMs
+        ? (song.progressMs / song.durationMs) * 100
+        : 0;
 
     return (
         <div className="flex flex-col text-left gap-3 p-6">
             {/* Header */}
             <div className="flex gap-3 items-center">
-                <Music className="text-pink-200 w-4 h-4" />
+                <Music className="text-pink-200 w-4 h-4 drop-shadow-[0_0_5px_rgba(255,192,203,0.8)]" />
                 <h3 className="text-sm text-white/80">Listening to:</h3>
             </div>
 
@@ -75,15 +77,15 @@ export default function SpotifyWidget() {
                     </a>
                     <p className="text-xs text-white/60">{song.artist}</p>
 
-                    {/* Progress bar */}
+                    {/* Glowing Progress Bar */}
                     <div className="mt-1 w-40">
                         <div className="flex justify-between text-[10px] text-white/40 mb-0.5">
                             <span>{formatTime(song.progressMs)}</span>
                             <span>{formatTime(song.durationMs)}</span>
                         </div>
-                        <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+                        <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden relative">
                             <div
-                                className="h-full bg-pink-300 rounded-full transition-all duration-1000 ease-linear"
+                                className="h-full bg-pink-300 rounded-full transition-all duration-1000 ease-linear shadow-[0_0_8px_1px_rgba(255,192,203,0.7)]"
                                 style={{ width: `${progressPercent}%` }}
                             ></div>
                         </div>

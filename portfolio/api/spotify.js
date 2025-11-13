@@ -38,13 +38,15 @@ export default async function handler(req, res) {
 
         const song = await nowPlaying.json();
 
-        // 3️⃣ Extract what we need
+        // 3️⃣ Extract what we need — add progress + duration
         return res.status(200).json({
             isPlaying: song.is_playing,
             title: song.item?.name,
             artist: song.item?.artists.map((a) => a.name).join(', '),
             albumImageUrl: song.item?.album.images[0].url,
             songUrl: song.item?.external_urls.spotify,
+            progressMs: song.progress_ms || 0,
+            durationMs: song.item?.duration_ms || 0,
         });
     } catch (err) {
         console.error('Spotify API error:', err);
