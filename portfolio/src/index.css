@@ -54,3 +54,30 @@ body {
         opacity: 0;
     }
 }
+
+/* slow breathing glow */
+@keyframes pulse-slow {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+}
+.animate-pulse-slow {
+    animation: pulse-slow 8s ease-in-out infinite;
+}
+
+/* gentle float up + down */
+@keyframes float-slow {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-4px); }
+}
+.animate-float-slow {
+    animation: float-slow 6s ease-in-out infinite;
+}
+
+/* sparkly anime ✦ */
+@keyframes sparkle {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+.animate-sparkle {
+    animation: sparkle 2.4s ease-in-out infinite;
+}
