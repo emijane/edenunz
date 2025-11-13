@@ -23,7 +23,7 @@ function App() {
                         <SpotifyWidget />
                     </div>
 
-                    <div className="max-w-250">
+                    <div className="max-w-230">
                         <ExperienceSection />
                         <ProjectsSection />
                         <EducationSection />
