@@ -20,7 +20,6 @@ function App() {
                 <div className="flex flex-col xl:flex-row gap-10">
                     <div className="flex flex-col justify-center">
                         <ProfileCard />
-                        <SpotifyWidget />
                     </div>
 
                     <div className="max-w-230">
