@@ -1,31 +1,35 @@
 {/* projects section */}
 
-import ContentBlock from "../components/ContentBlock";
+import ProjectCard from "../components/ProjectCard";
 
 export default function ProjectsSection() {
     return (
         <div className='flex flex-col gap-3 text-left p-6'>
             <h2 className='text-2xl text-white text-glow'>Projects</h2>
-            <div className='flex flex-col gap-4 pl-7 border-l border-pink-200'>
+            <div className='flex flex-col gap-4 pl-7 border-l border-pink-200/20'>
                 {/* Content blocks */}
-                <ContentBlock
+                <ProjectCard
                     title="StrataUI"
                     link="https://github.com/emijane/StrataUI"
-                    description="A curated catalog of modern frontend toolkits for developers and designers. Built with Next.js, Tailwind CSS, and Supabase."
+                    tech="Next.js, React.js, TypeScript, Tailwind CSS, Supabase"
+                    description="A curated catalog of modern frontend toolkits for developers and designers."
                 />
-                <ContentBlock
+                <ProjectCard
                     title="AskEric"
                     link="https://github.com/emijane/EquityEric"
+                    tech="React.js, Python (Django), REST API, OpenAI’s BERT module"
                     description="AskEric is a chatbot that uses NLP to provide accurate, truthful answers about health insurance and health-related topics, helping users navigate complex insurance systems easily."
                 />
-                <ContentBlock
+                <ProjectCard
                     title="Black Sun Games"
                     link="https://github.com/emijane/BSG"
+                    tech="React.js, Tailwind CSS, Vercel"
                     description="Solo-developed landing pages created with React + Vite, TailwindCSS, and deployed with Vercel."
                 />
-                <ContentBlock
+                <ProjectCard
                     title="Personal Website"
                     link="https://portfolio-2-0-iota.vercel.app/"
+                    tech="React.js, Tailwind CSS, Vercel"
                     description="Get to know me more through my personal website!"
                 />
             </div>

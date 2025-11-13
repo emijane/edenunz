@@ -10,7 +10,7 @@ export default function ExperienceSection() {
             </h2>
 
             {/* Timeline container */}
-            <div className="relative flex flex-col gap-6 pl-7 border-l border-pink-200">
+            <div className="relative flex flex-col gap-6 pl-7 border-l border-pink-200/20">
                 <ExperienceBlock
                     company="emagine"
                     date="2022 - 2025"
