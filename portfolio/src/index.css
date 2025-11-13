@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
-@tailwind utilities;
 
 :root {
   background-color: #121212;
@@ -8,7 +7,7 @@
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-osx-font-smoothing: grayscale;
 }
 
 @layer utilities {
@@ -22,7 +21,6 @@
         text-shadow: 0 0 5px #ffffff, 0 0 10px #ec4899, 0 0 20px #ec4899, 0 0 40px #ec4899;
     }
 
-    /* optional pulse */
     @keyframes glow {
         0%, 100% { text-shadow: 0 0 10px rgba(255,255,255,0.7), 0 0 20px rgba(255,255,255,0.6); }
         50%      { text-shadow: 0 0 20px rgba(255,255,255,1),   0 0 40px rgba(255,255,255,0.9); }
@@ -30,11 +28,29 @@
     .animate-glow { animation: glow 2s ease-in-out infinite; }
 }
 
-
 /* Global page styles */
-/* Global page styles: JetBrains Mono as the primary font */
 body {
     font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
     background-color: #121212;
     color: #ffffff;
+}
+
+/* Shooting star animations */
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes shoot {
+    0% {
+        transform: translate(0, 0) rotate(45deg);
+    }
+    100% {
+        transform: translate(200px, 200px) rotate(45deg);
+        opacity: 0;
+    }
 }
