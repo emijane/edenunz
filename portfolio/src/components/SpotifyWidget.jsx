@@ -62,8 +62,8 @@ export default function SpotifyWidget() {
 
     return (
         <div className="w-full p-4 text-left rounded-xl 
-                        bg-white/5 border border-white/10 
-                        shadow-[0_0_10px_rgba(255,255,255,0.08)]
+                        bg-white/5 border border-white/5 
+                        shadow-[0_0_10px_rgba(255,255,255,0.05)]
                         backdrop-blur-md">
 
             {/* Header */}
