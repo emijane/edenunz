@@ -5,9 +5,9 @@ export default function ToolkitCard() {
     return (
         <div
             className="
-                flex flex-col p-5
+                flex flex-col p-3
                 relative z-10
-                rounded-3xl 
+                rounded-xl 
                 bg-white/5
                 border border-pink-200/10 
                 backdrop-blur-xl
@@ -18,12 +18,12 @@ export default function ToolkitCard() {
             "
         >
             {/* Title */}
-            <h3 className="text-white/80 text-sm tracking-wide mb-3">
-                Toolkit
+            <h3 className="text-xs text-white tracking-wide mb-2">
+                Tools
             </h3>
 
             {/* Icon Grid */}
-            <div className="grid grid-cols-2 gap-4 place-items-center text-white text-2xl">
+            <div className="grid grid-cols-2 gap-3 place-items-center text-pink-200 text-xl">
                 <FaReact
                     title="React"
                     className="drop-shadow-[0_0_6px_rgba(255,255,255,0.25)] hover:scale-110 transition"
