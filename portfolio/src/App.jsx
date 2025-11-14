@@ -10,7 +10,7 @@ import { StarsBackground } from './components/ui/stars-background';
 
 function App() {
     return (
-        <div className="relative min-h-screen w-full overflow-hidden bg-black text-white">
+        <div className="relative min-h-screen w-full overflow-hidden bg-black text-white p-5">
 
             {/* ★ Background Layers */}
             <StarsBackground className="z-0" />
@@ -18,7 +18,7 @@ function App() {
             {/* ★ Main Content */}
             <div className="relative z-10 flex gap-10 mt-10 justify-center items-center">
                 <div className="flex flex-col xl:flex-row gap-10">
-                    <div className="flex flex-col justify-center">
+                    <div className="flex flex-col justify-center items-center">
                         <ProfileCard />
                     </div>
 

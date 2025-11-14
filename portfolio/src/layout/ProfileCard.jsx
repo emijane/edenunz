@@ -40,14 +40,14 @@ export default function ProfileCard() {
             ">
 
                 {/* AVATAR + TEXT */}
-                <div className="flex flex-row items-center gap-7">
+                <div className="flex flex-col sm:flex-row items-center gap-7">
                     <img 
                         src={icon}
                         alt="Icon"
                         className="w-24 lg:w-28 rounded-full shadow-[0_0_25px_rgba(255,255,255,0.18)]"
                     />
 
-                    <div className="text-left">
+                    <div className="text-left items-center sm:items-start flex flex-col">
                         <div className="flex items-center gap-2">
                             <h1 className="
                                 text-xl font-semibold text-white tracking-wide
