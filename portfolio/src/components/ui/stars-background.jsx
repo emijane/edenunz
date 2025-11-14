@@ -73,16 +73,16 @@ export const StarsBackground = ({ className }) => {
 
       if (width > 1024) {
         const g = nctx.createRadialGradient(
-          width * 0.05,
-          height * 0.10,
+          width * 0.01,
+          height * 0.2,
           0,
           width * 0.25,
-          height * 0.15,
-          width * 0.75
+          height * 0.10,
+          width * 0.55
         );
 
         g.addColorStop(0, "rgba(251,207,232,0.12)"); // pink-200
-        g.addColorStop(0.4, "rgba(212,109,191,0.06)");
+        g.addColorStop(0.5, "rgba(212,109,191,0.06)");
         g.addColorStop(1, "rgba(0,0,0,0)");
 
         nctx.globalCompositeOperation = "lighter";
