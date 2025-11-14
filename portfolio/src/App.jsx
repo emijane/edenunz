@@ -24,11 +24,11 @@ function App() {
                       <ParallaxHover>
                         <ProfileCard />
                       </ParallaxHover>
-                      <div className='flex'>
+                      <div className='flex w-full mt-3'>
+                        <TechStack/>
                         <div className="w-full mt-6">
                             <SpotifyWidget />
                         </div>
-                        <TechStack/>
                       </div>
                     </div>
 
