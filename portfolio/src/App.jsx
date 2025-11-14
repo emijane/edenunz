@@ -8,6 +8,7 @@ import SpotifyWidget from './components/SpotifyWidget';
 import EducationSection from './layout/EducationSection';
 import { StarsBackground } from './components/ui/stars-background';
 import ParallaxHover from './components/ParallaxHover';
+import TechStack from './layout/TechStack';
 
 function App() {
     return (
@@ -23,6 +24,10 @@ function App() {
                       <ParallaxHover>
                         <ProfileCard />
                       </ParallaxHover>
+                      <div className="w-full mt-6">
+                          <SpotifyWidget />
+                      </div>
+                      <TechStack/>
                     </div>
 
                     <div className="max-w-230">

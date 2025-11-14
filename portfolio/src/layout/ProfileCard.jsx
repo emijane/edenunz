@@ -84,12 +84,6 @@ export default function ProfileCard() {
                         </div>
                     </div>
                 </div>
-
-                {/* SPOTIFY PLAYER INSIDE CARD */}
-                <div className="w-full mt-6">
-                    <SpotifyWidget />
-                </div>
-
             </div>
         </div>
     );
