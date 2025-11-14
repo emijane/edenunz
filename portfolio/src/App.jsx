@@ -11,7 +11,7 @@ import ParallaxHover from './components/ParallaxHover';
 
 function App() {
     return (
-        <div className="relative min-h-screen w-full overflow-hidden bg-black text-white p-5">
+        <div className="relative min-h-screen w-full overflow-hidden bg-black text-white p-8">
 
             {/* ★ Background Layers */}
             <StarsBackground className="z-0" />
