@@ -98,7 +98,7 @@ export default function SpotifyWidget() {
 
                     {/* Progress */}
                     <div className="mt-1">
-                        <div className="flex justify-between text-[10px] text-white/40">
+                        <div className="flex justify-between text-[10px] text-white/40 mb-2">
                             <span>{formatTime(song.progressMs)}</span>
                             <span>{formatTime(song.durationMs)}</span>
                         </div>
