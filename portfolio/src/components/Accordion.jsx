@@ -28,7 +28,7 @@ export default function Accordion({ icon, title, children, defaultOpen = false }
 
                 <ChevronDown
                     className={`
-                        text-white/70 transition-transform duration-300
+                        transition-transform duration-300 text-pink-200 w-5 h-5 drop-shadow-[0_0_5px_rgba(255,192,203,0.8)]
                         ${open ? "rotate-180" : ""}
                     `}
                 />

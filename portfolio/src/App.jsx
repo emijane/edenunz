@@ -28,7 +28,7 @@ function App() {
                         </div>
                     </div>
 
-                    <div className="max-w-230">
+                    <div className="max-w-210">
                       <EducationSection />
                       <ExperienceSection />
                       <ProjectsSection />
