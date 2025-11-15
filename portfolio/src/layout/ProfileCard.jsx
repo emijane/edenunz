@@ -50,7 +50,7 @@ export default function ProfileCard() {
                         </div>
 
                         <p className="text-xs text-pink-200/80 tracking-wide mt-1">
-                            jr frontend developer · CS @ UF
+                            jr frontend developer
                         </p>
 
                         <div className="flex flex-row gap-3 mt-3">

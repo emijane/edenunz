@@ -20,7 +20,7 @@ function App() {
             {/* ★ Main Content */}
             <div className="relative z-10 flex gap-10 mt-10 justify-center items-center">
                 <div className="flex flex-col xl:flex-row gap-10">
-                    <div className="flex flex-col justify-center items-center max-w-[437px]">
+                    <div className="flex flex-col justify-center items-center lg:max-w-[450px]">
                       <ParallaxHover>
                         <ProfileCard />
                       </ParallaxHover>
