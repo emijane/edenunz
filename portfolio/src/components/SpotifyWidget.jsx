@@ -83,25 +83,20 @@ export default function SpotifyWidget() {
                 />
 
                 <div className="flex flex-col w-full overflow-hidden">
+                    <a
+                        href={song.songUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-white font-medium max-w-[260px] truncate hover:underline"
+                    >
+                        {song.title}
+                    </a>
 
-                    {/* Song Title with marquee on hover */}
-                    <div className="overflow-hidden whitespace-nowrap max-w-[260px]">
-                        <a
-                            href={song.songUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-block text-sm text-white font-medium hover:underline marquee-hover"
-                        >
-                            {song.title}
-                        </a>
-                    </div>
-
-                    {/* Artist */}
-                    <p className="text-xs text-white/50 truncate max-w-[260px]">
+                    <p className="text-xs text-white/50 truncate">
                         {song.artist}
                     </p>
 
-                    {/* Progress Bar */}
+                    {/* Progress */}
                     <div className="mt-1">
                         <div className="flex justify-between text-[10px] text-white/40 mb-2">
                             <span>{formatTime(song.progressMs)}</span>
