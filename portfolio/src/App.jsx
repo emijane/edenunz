@@ -23,9 +23,6 @@ function App() {
                       <ParallaxHover>
                         <ProfileCard />
                       </ParallaxHover>
-                        <div className="w-full mt-6">
-                            <SpotifyWidget />
-                        </div>
                     </div>
 
                     <div className="max-w-210">
