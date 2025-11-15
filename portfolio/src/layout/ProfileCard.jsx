@@ -1,6 +1,7 @@
 import icon from '../assets/icon.jpg';
 import { Linkedin, Instagram, Github, Mail } from "lucide-react";
 import TechIcons from '../components/ui/tech-icons';
+import SpotifyWidget from '../components/SpotifyWidget';
 
 export default function ProfileCard() {
     return (
@@ -97,6 +98,8 @@ export default function ProfileCard() {
                     </div>
                 </div>
             </div>
+
+            <SpotifyWidget />
         </div>
     );
 }
