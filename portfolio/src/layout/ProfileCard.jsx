@@ -8,42 +8,13 @@ export default function ProfileCard() {
         <div className="relative group">
 
             {/* OUTER AURA GLOW */}
-            <div
-                className="
-                    absolute inset-0 rounded-3xl
-                    bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-blue-500/10
-                    blur-2xl opacity-70
-                    group-hover:opacity-90
-                    transition-all duration-700
-                    pointer-events-none
-                "
-            ></div>
+            <div className="card-aura" />
 
-            {/* SOFT TOP HIGHLIGHT */}
-            <div
-                className="
-                    absolute inset-0 rounded-3xl
-                    bg-white/5 blur-xl opacity-10
-                    pointer-events-none
-                "
-            ></div>
+            {/* SOFT HIGHLIGHT */}
+            <div className="card-highlight" />
 
             {/* MAIN CARD */}
-            <div
-                className="
-                    relative z-10
-                    px-8 py-7
-                    rounded-3xl
-                    bg-white/5
-                    border border-pink-200/5
-                    shadow-[0_0_10px_rgba(255,255,255,0.1)]
-                    ring-1 ring-white/10
-                    transition-all duration-500
-                    group-hover:bg-pink-200/5
-                    group-hover:shadow-[0_0_15px_rgba(255,255,255,0.17)]
-                    w-full
-                "
-            >
+            <div className="card-styles w-full">
                 <div className="flex flex-col sm:flex-row items-center gap-7 relative">
 
                     {/* AVATAR + orbit icons wrapper */}
