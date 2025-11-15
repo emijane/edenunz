@@ -81,3 +81,12 @@ body {
 .animate-sparkle {
     animation: sparkle 2.4s ease-in-out infinite;
 }
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.marquee-hover:hover {
+    animation: marquee 6s linear infinite;
+}
