@@ -8,6 +8,7 @@ import SpotifyWidget from './components/SpotifyWidget';
 import EducationSection from './layout/EducationSection';
 import { StarsBackground } from './components/ui/stars-background';
 import ParallaxHover from './components/ParallaxHover';
+import AboutMeSection from './layout/AboutMeSection';
 
 function App() {
     return (
@@ -19,10 +20,11 @@ function App() {
             {/* ★ Main Content */}
             <div className="relative z-10 flex gap-10 mt-10 justify-center items-center">
                 <div className="flex flex-col xl:flex-row gap-10">
-                    <div className="flex flex-col justify-center items-center">
+                    <div className="flex flex-col justify-center items-center max-w-[450px]">
                       <ParallaxHover>
                         <ProfileCard />
                       </ParallaxHover>
+                      <AboutMeSection />
                     </div>
 
                     <div className="max-w-210">

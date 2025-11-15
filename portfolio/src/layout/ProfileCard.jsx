@@ -69,7 +69,7 @@ export default function ProfileCard() {
                                     drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]
                                 "
                             >
-                                Emma DeNunzio
+                                emma denunzio
                             </h1>
 
                             <span className="text-pink-300 text-xs animate-pulse-slow">
@@ -78,7 +78,7 @@ export default function ProfileCard() {
                         </div>
 
                         <p className="text-xs text-pink-200/80 tracking-wide mt-1">
-                            Jr Frontend Developer · CS @ UF
+                            jr frontend developer · CS @ UF
                         </p>
 
                         <div className="flex flex-row gap-3 mt-3">
