@@ -5,7 +5,7 @@ import SpotifyWidget from '../components/SpotifyWidget';
 
 export default function ProfileCard() {
     return (
-        <div className="relative w-full max-w-xl group">
+        <div className="relative group">
 
             {/* OUTER AURA GLOW */}
             <div
@@ -41,6 +41,7 @@ export default function ProfileCard() {
                     transition-all duration-500
                     group-hover:bg-pink-200/5
                     group-hover:shadow-[0_0_15px_rgba(255,255,255,0.17)]
+                    w-full
                 "
             >
                 <div className="flex flex-col sm:flex-row items-center gap-7 relative">
