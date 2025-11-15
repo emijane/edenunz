@@ -87,7 +87,7 @@ export default function SpotifyWidget() {
                         href={song.songUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm text-white font-medium max-w-full truncate hover:underline"
+                        className="text-sm text-white font-medium max-w-[260px] truncate hover:underline"
                     >
                         {song.title}
                     </a>
