@@ -97,9 +97,8 @@ export default function ProfileCard() {
                         </div>
                     </div>
                 </div>
+                <SpotifyWidget />
             </div>
-
-            <SpotifyWidget />
         </div>
     );
 }
