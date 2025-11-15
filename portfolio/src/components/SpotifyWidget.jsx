@@ -82,12 +82,12 @@ export default function SpotifyWidget() {
                     className="w-12 h-12 rounded-md shadow-md"
                 />
 
-                <div className="flex flex-col w-full">
+                <div className="flex flex-col w-full overflow-hidden">
                     <a
                         href={song.songUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm text-white font-medium truncate hover:underline"
+                        className="text-sm text-white font-medium max-w-full truncate hover:underline"
                     >
                         {song.title}
                     </a>
