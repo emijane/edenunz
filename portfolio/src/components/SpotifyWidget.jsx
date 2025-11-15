@@ -73,25 +73,13 @@ export default function SpotifyWidget() {
 
             {/* Track Info */}
             <div className="flex items-center gap-4 w-full">
-
-                {/* Album Art w/ Glow */}
-                <div className="relative">
-                    <div className="
-                        absolute inset-0 rounded-md 
-                        bg-gradient-to-br from-pink-400/40 to-purple-400/40 
-                        blur-xl -z-10
-                    "></div>
-
-                    <img
-                        src={song.albumImageUrl}
-                        alt={song.title}
-                        className="w-12 h-12 rounded-md shadow-md relative z-10"
-                    />
-                </div>
+                <img
+                    src={song.albumImageUrl}
+                    alt={song.title}
+                    className="w-12 h-12 rounded-md shadow-md"
+                />
 
                 <div className="flex flex-col w-full overflow-hidden">
-
-                    {/* Title */}
                     <a
                         href={song.songUrl}
                         target="_blank"
@@ -101,7 +89,6 @@ export default function SpotifyWidget() {
                         {song.title}
                     </a>
 
-                    {/* Artist */}
                     <p className="text-xs text-white/50 truncate">
                         {song.artist}
                     </p>
@@ -122,7 +109,6 @@ export default function SpotifyWidget() {
                             ></div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
