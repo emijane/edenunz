@@ -64,7 +64,7 @@ export default function SpotifyWidget() {
         <div className="w-full p-4 text-left rounded-xl 
                         bg-white/5 border border-white/5 
                         shadow-[0_0_10px_rgba(255,255,255,0.05)]
-                        backdrop-blur-md">
+                        backdrop-blur-md max-w-xl">
 
             {/* Header */}
             <div className="flex items-center gap-2 mb-2">
