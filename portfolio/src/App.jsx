@@ -24,7 +24,9 @@ function App() {
                       <ParallaxHover>
                         <ProfileCard />
                       </ParallaxHover>
-                      <AboutMeSection />
+                      <ParallaxHover>
+                        <AboutMeSection />
+                      </ParallaxHover>
                     </div>
 
                     <div className="max-w-210">
