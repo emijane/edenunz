@@ -14,14 +14,14 @@ export default function ExperienceSection() {
             <div className="flex flex-col gap-6 pl-7 border-l border-pink-200/20 ml-9 text-left">
 
                 <ExperienceBlock
-                    company="emagine"
+                    company="company"
                     date="2022 - 2025"
                     role="Frontend Developer Associate"
                     description="Built responsive, pixel-perfect websites with HTML, CSS, and JavaScript. Created reusable UI components and optimized build processes for performance. Ensured accessibility, cross-browser support, and mobile-first design."
                 />
 
                 <ExperienceBlock
-                    company="emagine"
+                    company="company"
                     date="2021 - 2022"
                     role="Frontend Development Intern"
                     description="Converted high-fidelity mockups into interactive web pages using HTML, CSS, and JavaScript. Collaborated with engineers on feature development and UI optimization using Git and PHP. Improved UX, resolved interface bugs, and contributed to agile sprint cycles."

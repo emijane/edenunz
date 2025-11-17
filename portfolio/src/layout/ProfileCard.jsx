@@ -41,7 +41,7 @@ export default function ProfileCard() {
                                     drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]
                                 "
                             >
-                                emma denunzio
+                                emma
                             </h1>
 
                             <span className="text-pink-300 text-xs animate-pulse-slow">
