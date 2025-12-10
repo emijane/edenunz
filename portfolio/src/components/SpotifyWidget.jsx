@@ -61,7 +61,7 @@ export default function SpotifyWidget() {
         (song.progressMs / song.durationMs) * 100;
 
     return (
-        <div className="w-full text-left max-w-xl bg-black rounded-2xl">
+        <div className="w-full text-left max-w-xl bg-black rounded-2xl p-3">
 
             {/* Header */}
             <div className="flex items-center gap-2 mb-2">
