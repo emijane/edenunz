@@ -18,7 +18,7 @@ function App() {
             <StarsBackground className="z-0" />
 
             {/* ★ Main Content */}
-            <div className="relative z-10 flex flex-row mt-10 justify-center items-center max-w-4xl mx-auto">
+            <div className="relative z-10 flex flex-row gap-5 mt-10 max-w-4xl mx-auto">
                 <div className="flex flex-col gap-3">
                     <div className="flex flex-col">
                       <ParallaxHover>
