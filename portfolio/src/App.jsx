@@ -30,8 +30,10 @@ function App() {
                         <ProjectsSection />
                       </div>
                 </div>
-                <SpotifyWidget />
-                <AboutMeSection />
+                <div className='flex'>
+                  <SpotifyWidget />
+                  <AboutMeSection />
+                </div>
             </div>
         </div>
     );
