@@ -4,15 +4,11 @@ import { CodeXml } from "lucide-react";
 
 export default function ProjectsSection() {
     return (
-        <Accordion
-            title="Projects"
-            icon={
-                <CodeXml className="text-pink-200 w-5 h-5 drop-shadow-[0_0_5px_rgba(255,192,203,0.8)]" />
-            }
-            defaultOpen={true}
-        >
-            <div className="flex flex-col card-styles gap-4 border-l border-pink-200/20 text-left">
-
+            <div className="flex flex-col card-black gap-4 text-left mt-3">
+                <div className="flex flex-row gap-3 items-center">
+                    <CodeXml className="text-pink-200 w-5 h-5 drop-shadow-[0_0_5px_rgba(255,192,203,0.8)] " />
+                    <h3 className="text-lg">Projects</h3>
+                </div>
                 <ProjectCard
                     title="StrataUI"
                     link="https://github.com/emijane/StrataUI"
@@ -42,6 +38,5 @@ export default function ProjectsSection() {
                 />
 
             </div>
-        </Accordion>
     );
 }

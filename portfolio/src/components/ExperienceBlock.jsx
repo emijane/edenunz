@@ -10,7 +10,7 @@ export default function ExperienceBlock({ company, date, role, description }) {
                 <h3 className="text-md font-semibold text-white mb-1">
                     {company} <span className="opacity-50">/</span>
                 </h3>
-                <p className="text-xs text-white/50">{date}</p>
+                <p className="text-xs text-white/50 ">{date}</p>
             </div>
 
             {/* Role + Description */}
