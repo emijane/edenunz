@@ -18,7 +18,6 @@ export default function ProfileCard() {
                         alt="Cover Photo"
                         className="w-full h-full object-cover opacity-70"
                     />
-                    <div className="absolute inset-0 bg-linear-to-b from-transparent via-black/20 to-[#120415]/70 pointer-events-none" />
                 </div>
 
                 {/* CONTENT WRAPPER */}
@@ -39,7 +38,7 @@ export default function ProfileCard() {
                     {/* TEXT BLOCK */}
                     <div className="text-left flex flex-col">
                         <div className="flex items-center gap-2">
-                            <h1 className="text-xl font-semibold text-white tracking-wide drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]">
+                            <h1 className="text-xl font-semibold text-white tracking-wide">
                                 Emma DeNunzio
                             </h1>
                         </div>

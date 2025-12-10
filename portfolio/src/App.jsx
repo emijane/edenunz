@@ -18,24 +18,19 @@ function App() {
             <StarsBackground className="z-0" />
 
             {/* ★ Main Content */}
-            <div className="relative z-10 flex mt-10 justify-center items-center max-w-5xl mx-auto">
+            <div className="relative z-10 flex-col mt-10 justify-center items-center max-w-4xl mx-auto">
                 <div className="flex flex-col gap-3">
                     <div className="flex flex-col">
                       <ParallaxHover>
                         <ProfileCard />
                       </ParallaxHover>
                     </div>
-
-                    <div>
                       <div>
                         <ExperienceSection />
                         <ProjectsSection />
                       </div>
-                      {/* <ParallaxHover>
-                        <AboutMeSection />
-                      </ParallaxHover> */}
-                    </div>
                 </div>
+                <SpotifyWidget />
             </div>
 
         </div>
