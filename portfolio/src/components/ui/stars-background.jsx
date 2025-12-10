@@ -2,183 +2,221 @@
 import { cn } from "@/lib/utils";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
-// --------------------------------------------------
-// THIS VERSION NEVER RE-DRAWS THE NEBULA AGAIN
-// --------------------------------------------------
-
-export const StarsBackground = ({ className }) => {
-  const canvasRef = useRef(null);
-  const nebulaCanvasRef = useRef(null); // offscreen buffer
-
-  const layers = [
+// Make layers stable across renders
+const LAYERS = [
     { density: 0.00010, speed: 0.15, size: 0.7 },
     { density: 0.00006, speed: 0.25, size: 1.0 },
     { density: 0.00003, speed: 0.40, size: 1.5 },
-  ];
+];
 
-  // Generate star layers
-  const generateLayer = useCallback((width, height, density, sizeMult) => {
-    const num = Math.floor(width * height * density);
+export const StarsBackground = ({ className }) => {
+    const canvasRef = useRef(null);
+    const nebulaCanvasRef = useRef(null); // offscreen buffer
 
-    const colors = [
-      "rgba(200,220,255",
-      "rgba(220,200,255",
-      "rgba(255,210,230",
-      "rgba(255,255,255"
-    ];
+    // Generate star layers
+    const generateLayer = useCallback((width, height, density, sizeMult) => {
+        const num = Math.floor(width * height * density);
 
-    return Array.from({ length: num }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      size:
-        Math.random() < 0.08
-          ? (Math.random() * 1.5 + 1.5) * sizeMult
-          : (Math.random() * 0.8 + 0.4) * sizeMult,
-      baseOpacity: Math.random() * 0.4 + 0.3,
-      twinkleSpeed: Math.random() * 0.003 + 0.001,
-      fadeSpeed: Math.random() * 0.002 + 0.001,
-      phase: Math.random() * Math.PI * 2,
-      fadePhase: Math.random() * Math.PI * 2,
-      glow: Math.random() < 0.10 ? 40 : 12,
-      color: colors[Math.floor(Math.random() * colors.length)],
-    }));
-  }, []);
+        const colors = [
+            "rgba(200,220,255",
+            "rgba(220,200,255",
+            "rgba(255,210,230",
+            "rgba(255,255,255",
+        ];
 
-  const [stars, setStars] = useState([]);
+        return Array.from({ length: num }, () => ({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            size:
+                Math.random() < 0.08
+                    ? (Math.random() * 1.5 + 1.5) * sizeMult
+                    : (Math.random() * 0.8 + 0.4) * sizeMult,
+            baseOpacity: Math.random() * 0.4 + 0.3,
+            twinkleSpeed: Math.random() * 0.003 + 0.001,
+            fadeSpeed: Math.random() * 0.002 + 0.001,
+            phase: Math.random() * Math.PI * 2,
+            fadePhase: Math.random() * Math.PI * 2,
+            glow: Math.random() < 0.1 ? 40 : 12,
+            color: colors[Math.floor(Math.random() * colors.length)],
+        }));
+    }, []);
 
-  // Resize handler — also regenerates nebula ONCE
-  useEffect(() => {
-    const update = () => {
-      const canvas = canvasRef.current;
-      const nebulaCanvas = nebulaCanvasRef.current;
-      if (!canvas || !nebulaCanvas) return;
+    const [stars, setStars] = useState([]);
 
-      const { width, height } = canvas.getBoundingClientRect();
-      canvas.width = width;
-      canvas.height = height;
+    // Resize handler — regenerates stars + nebula on viewport size change
+    useEffect(() => {
+        const update = () => {
+            const canvas = canvasRef.current;
+            const nebulaCanvas = nebulaCanvasRef.current;
+            if (!canvas || !nebulaCanvas) return;
 
-      nebulaCanvas.width = width;
-      nebulaCanvas.height = height;
+            const width = window.innerWidth;
+            const height = window.innerHeight;
 
-      // regenerate stars
-      setStars(
-        layers.map((layer) =>
-          generateLayer(width, height, layer.density, layer.size)
-        )
-      );
+            canvas.width = width;
+            canvas.height = height;
 
-      // redraw nebula ONCE only
-      const nctx = nebulaCanvas.getContext("2d");
-      nctx.clearRect(0, 0, width, height);
+            nebulaCanvas.width = width;
+            nebulaCanvas.height = height;
 
-      if (width > 1024) {
-        const g = nctx.createRadialGradient(
-          width * 0.7,
-          height * 0.3,
-          0,
-          width * 0.45,
-          height * 0.30,
-          width * 0.55
-        );
+            // regenerate stars
+            setStars(
+                LAYERS.map((layer) =>
+                    generateLayer(width, height, layer.density, layer.size)
+                )
+            );
 
-        g.addColorStop(0, "rgba(251,207,232,0.01)"); // pink-200
-        g.addColorStop(0.5, "rgba(212,109,191,0.06)");
-        g.addColorStop(1, "rgba(0,0,0,0)");
+            // redraw nebula ONCE per resize
+            const nctx = nebulaCanvas.getContext("2d");
+            nctx.clearRect(0, 0, width, height);
 
-        nctx.globalCompositeOperation = "lighter";
-        nctx.fillStyle = g;
-        nctx.fillRect(0, 0, width, height);
-        nctx.globalCompositeOperation = "source-over";
-      }
+            nctx.globalCompositeOperation = "lighter";
+
+            const paintNebula = (cxInner, cyInner, cxOuter, cyOuter, outerRadius) => {
+                const g = nctx.createRadialGradient(
+                    cxInner,
+                    cyInner,
+                    0,
+                    cxOuter,
+                    cyOuter,
+                    outerRadius
+                );
+
+                g.addColorStop(0, "rgba(251,207,232,0.04)"); // soft pink core
+                g.addColorStop(0.5, "rgba(212,109,191,0.08)");
+                g.addColorStop(1, "rgba(0,0,0,0)");
+
+                nctx.fillStyle = g;
+                nctx.fillRect(0, 0, width, height);
+            };
+
+            const isMobile = width < 768;
+
+            if (isMobile) {
+                // Left nebula (top-left-ish)
+                paintNebula(
+                    width * 0.15,
+                    height * 0.25,
+                    width * 0.30,
+                    height * 0.22,
+                    width * 0.7
+                );
+                // Right nebula (top-right-ish)
+                paintNebula(
+                    width * 0.80,
+                    height * 0.30,
+                    width * 0.90,
+                    height * 0.26,
+                    width * 0.7
+                );
+            } else {
+                // Desktop left nebula
+                paintNebula(
+                    width * 0.10,
+                    height * 0.28,
+                    width * 0.28,
+                    height * 0.18,
+                    width * 0.55
+                );
+                // Desktop right nebula
+                paintNebula(
+                    width * 0.80,
+                    height * 0.22,
+                    width * 0.60,
+                    height * 0.16,
+                    width * 0.55
+                );
+            }
+
+            nctx.globalCompositeOperation = "source-over";
+        };
+
+        update();
+        window.addEventListener("resize", update);
+
+        return () => window.removeEventListener("resize", update);
+    }, [generateLayer]);
+
+    // Draw ✦ shape
+    const drawStarShape = (ctx, x, y, size) => {
+        ctx.save();
+        ctx.translate(x, y);
+
+        ctx.beginPath();
+        ctx.moveTo(0, -size * 2);
+        ctx.lineTo(0, size * 2);
+        ctx.moveTo(-size * 2, 0);
+        ctx.lineTo(size * 2, 0);
+
+        ctx.stroke();
+        ctx.restore();
     };
 
-    update();
+    // Animation loop — ONLY stars animate
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        const nebulaCanvas = nebulaCanvasRef.current;
+        if (!canvas || !nebulaCanvas || stars.length === 0) return;
 
-    const obs = new ResizeObserver(update);
-    obs.observe(canvasRef.current);
+        const ctx = canvas.getContext("2d");
 
-    return () => obs.disconnect();
-  }, [generateLayer]);
+        let frame;
 
-  // Draw ✦ shape
-  const drawStarShape = (ctx, x, y, size) => {
-    ctx.save();
-    ctx.translate(x, y);
+        const loop = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(nebulaCanvas, 0, 0);
 
-    ctx.beginPath();
-    ctx.moveTo(0, -size * 2);
-    ctx.lineTo(0, size * 2);
-    ctx.moveTo(-size * 2, 0);
-    ctx.lineTo(size * 2, 0);
+            const time = Date.now();
 
-    ctx.stroke();
-    ctx.restore();
-  };
+            stars.forEach((layerStars, i) => {
+                const depth = LAYERS[i].speed;
 
-  // Animation loop — ONLY stars animate
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const nebulaCanvas = nebulaCanvasRef.current;
-    if (!canvas || !nebulaCanvas || stars.length === 0) return;
+                layerStars.forEach((star) => {
+                    const fade =
+                        Math.sin(time * star.fadeSpeed + star.fadePhase) * 0.5 + 0.5;
+                    const twinkle =
+                        Math.sin(time * star.twinkleSpeed + star.phase) * 0.4 + 0.6;
 
-    const ctx = canvas.getContext("2d");
+                    const opacity = star.baseOpacity * fade + twinkle * 0.5;
 
-    let frame;
+                    star.x += depth * 0.15;
+                    star.y += depth * 0.05;
 
-    const loop = () => {
-      // draw static glow
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(nebulaCanvas, 0, 0);
+                    if (star.x > canvas.width) star.x = 0;
+                    if (star.y > canvas.height) star.y = 0;
 
-      const time = Date.now();
+                    ctx.shadowBlur = star.glow;
+                    ctx.shadowColor = `${star.color}, 0.25)`;
+                    ctx.strokeStyle = `${star.color}, ${opacity})`;
+                    ctx.lineWidth = star.size * 0.6;
 
-      // draw stars ONLY
-      stars.forEach((layerStars, i) => {
-        const depth = layers[i].speed;
+                    drawStarShape(ctx, star.x, star.y, star.size);
+                });
+            });
 
-        layerStars.forEach((star) => {
-          const fade =
-            Math.sin(time * star.fadeSpeed + star.fadePhase) * 0.5 + 0.5;
-          const twinkle =
-            Math.sin(time * star.twinkleSpeed + star.phase) * 0.4 + 0.6;
+            frame = requestAnimationFrame(loop);
+        };
 
-          const opacity = star.baseOpacity * fade + twinkle * 0.5;
+        loop();
+        return () => cancelAnimationFrame(frame);
+    }, [stars]);
 
-          star.x += depth * 0.15;
-          star.y += depth * 0.05;
+    return (
+        <>
+            {/* static glow buffer */}
+            <canvas
+                ref={nebulaCanvasRef}
+                className="fixed inset-0 w-screen h-screen pointer-events-none"
+            />
 
-          if (star.x > canvas.width) star.x = 0;
-          if (star.y > canvas.height) star.y = 0;
-
-          ctx.shadowBlur = star.glow;
-          ctx.shadowColor = `${star.color}, 0.25)`;  // static glow
-          ctx.strokeStyle = `${star.color}, ${opacity})`;
-          ctx.lineWidth = star.size * 0.6;
-
-          drawStarShape(ctx, star.x, star.y, star.size);
-        });
-      });
-
-      frame = requestAnimationFrame(loop);
-    };
-
-    loop();
-    return () => cancelAnimationFrame(frame);
-  }, [stars]);
-
-  return (
-    <>
-      {/* static glow buffer */}
-      <canvas ref={nebulaCanvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />
-      
-      {/* star animation */}
-      <canvas
-        ref={canvasRef}
-        className={cn(
-          "absolute inset-0 w-full h-full pointer-events-none",
-          className
-        )}
-      />
-    </>
-  );
+            {/* star animation */}
+            <canvas
+                ref={canvasRef}
+                className={cn(
+                    "fixed inset-0 w-screen h-screen pointer-events-none",
+                    className
+                )}
+            />
+        </>
+    );
 };
