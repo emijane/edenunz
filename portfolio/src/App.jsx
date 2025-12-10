@@ -28,7 +28,6 @@ function App() {
 
                     <div>
                       <div>
-                        <EducationSection />
                         <ExperienceSection />
                         <ProjectsSection />
                       </div>

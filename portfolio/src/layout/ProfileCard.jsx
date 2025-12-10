@@ -25,14 +25,13 @@ export default function ProfileCard() {
                 <div className="flex flex-col gap-3 relative z-10">
 
                     {/* AVATAR */}
-                    <div className="relative w-fit -mt-30 z-10">
+                    <div className="relative w-fit -mt-25 z-10">
                         <img
                             src={icon}
                             alt="Avatar"
                             className="
                                 w-24 lg:w-40 rounded-full
-                                shadow-[0_0_25px_rgba(255,255,255,0.18)]
-                                border-2 border-pink-200
+                                border-5 border-black
                             "
                         />
                     </div>
@@ -43,12 +42,13 @@ export default function ProfileCard() {
                             <h1 className="text-xl font-semibold text-white tracking-wide drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]">
                                 Emma DeNunzio
                             </h1>
-                            <span className="text-pink-300 text-xs animate-pulse-slow">✦</span>
                         </div>
 
-                        <p className="text-sm text-pink-200 tracking-wide mt-1">
+                        <p className="text-sm text-pink-200 tracking-wide">
                             Frontend Developer
                         </p>
+
+                        <p className='text-xs mt-2 opacity-70'>CS @ The University of Florida</p>
 
                         <div className="flex flex-row gap-3 mt-3">
                             {[Linkedin, Instagram, Github, Mail].map((Icon, i) => (
