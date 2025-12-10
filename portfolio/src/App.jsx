@@ -30,7 +30,7 @@ function App() {
                         <ProjectsSection />
                       </div>
                 </div>
-                <div className='flex'>
+                <div className='flex flex-col gap-3'>
                   <SpotifyWidget />
                   <AboutMeSection />
                 </div>
