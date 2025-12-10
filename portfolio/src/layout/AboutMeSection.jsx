@@ -4,15 +4,9 @@ export default function AboutMeSection() {
     return (
         <div>
 
-            {/* OUTER AURA GLOW */}
-            <div className="card-aura" />
-
-            {/* SOFT HIGHLIGHT */}
-            <div className="card-highlight" />
-
             {/* MAIN CARD */}
             <div
-                className="card-styles text-left lg:max-w-2xl"
+                className="card-black text-left lg:max-w-2xl"
             >
                 {/* VERSION LABEL */}
                 <p className="text-[10px] text-pink-200/80 tracking-wide mb-2">

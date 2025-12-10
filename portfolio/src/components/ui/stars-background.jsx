@@ -73,11 +73,11 @@ export const StarsBackground = ({ className }) => {
 
       if (width > 1024) {
         const g = nctx.createRadialGradient(
-          width * 0.01,
-          height * 0.2,
+          width * 0.7,
+          height * 0.3,
           0,
-          width * 0.25,
-          height * 0.10,
+          width * 0.45,
+          height * 0.30,
           width * 0.55
         );
 

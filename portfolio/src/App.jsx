@@ -18,7 +18,7 @@ function App() {
             <StarsBackground className="z-0" />
 
             {/* ★ Main Content */}
-            <div className="relative z-10 flex flex-row gap-5 mt-10 max-w-5xl mx-auto">
+            <div className="relative z-10 flex flex-col lg:flex-row gap-5 mt-10 max-w-5xl mx-auto">
                 <div className="flex flex-col gap-3">
                     <div className="flex flex-col">
                       <ParallaxHover>
@@ -31,8 +31,8 @@ function App() {
                       </div>
                 </div>
                 <SpotifyWidget />
+                <AboutMeSection />
             </div>
-
         </div>
     );
 }
