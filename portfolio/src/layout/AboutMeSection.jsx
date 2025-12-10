@@ -2,7 +2,7 @@ import minecraft from "../assets/minecraft-icon.png";
 
 export default function AboutMeSection() {
     return (
-        <div className="mt-3">
+        <div>
 
             {/* OUTER AURA GLOW */}
             <div className="card-aura" />

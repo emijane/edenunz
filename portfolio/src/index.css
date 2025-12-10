@@ -83,6 +83,16 @@ body {
 }
 
 @layer components {
+    .card-black {
+        @apply
+            relative
+            z-10
+            px-8
+            py-7
+            rounded-3xl
+            bg-black/90
+    }
+
     .card-styles {
         @apply
             relative
