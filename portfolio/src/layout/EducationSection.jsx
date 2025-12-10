@@ -9,7 +9,7 @@ export default function EducationAccordion() {
             icon={<BookHeart className="text-pink-200 w-5 h-5 drop-shadow-[0_0_5px_rgba(255,192,203,0.8)] " />}
             defaultOpen={true}
         >
-            <div className="flex flex-col pl-7 border-l border-pink-200/20 ml-9 text-left">
+            <div className="flex flex-col pl-7 border-l border-pink-200/20 text-left card-styles">
                 <ExperienceBlock
                     company="The University of Florida"
                     date="December 2026 (expected)"

@@ -81,7 +81,7 @@ export const StarsBackground = ({ className }) => {
           width * 0.55
         );
 
-        g.addColorStop(0, "rgba(251,207,232,0.12)"); // pink-200
+        g.addColorStop(0, "rgba(251,207,232,0.01)"); // pink-200
         g.addColorStop(0.5, "rgba(212,109,191,0.06)");
         g.addColorStop(1, "rgba(0,0,0,0)");
 

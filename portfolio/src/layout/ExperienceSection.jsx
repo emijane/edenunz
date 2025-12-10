@@ -11,8 +11,13 @@ export default function ExperienceSection() {
             }
             defaultOpen={true}
         >
-            <div className="flex flex-col gap-6 pl-7 border-l border-pink-200/20 ml-9 text-left">
+            <div className="flex flex-col card-styles gap-6 pl-7 border border-pink-200/20 text-left">
 
+                <ExperienceBlock
+                    company="Boats Group"
+                    date="Summer 2026"
+                    role="Software Developer Intern"
+                />
                 <ExperienceBlock
                     company="emagine"
                     date="2022 - 2025"

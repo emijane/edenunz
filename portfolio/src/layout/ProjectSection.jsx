@@ -11,7 +11,7 @@ export default function ProjectsSection() {
             }
             defaultOpen={true}
         >
-            <div className="flex flex-col gap-4 pl-7 border-l border-pink-200/20 ml-9 text-left">
+            <div className="flex flex-col card-styles gap-4 border-l border-pink-200/20 text-left">
 
                 <ProjectCard
                     title="StrataUI"

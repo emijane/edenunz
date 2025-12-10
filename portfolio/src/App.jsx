@@ -18,21 +18,23 @@ function App() {
             <StarsBackground className="z-0" />
 
             {/* ★ Main Content */}
-            <div className="relative z-10 flex gap-10 mt-10 justify-center items-center">
-                <div className="flex flex-col xl:flex-row gap-10">
-                    <div className="flex flex-col justify-center items-center lg:max-w-[450px]">
+            <div className="relative z-10 flex gap-10 mt-10 justify-center items-center max-w-5xl mx-auto">
+                <div className="flex flex-col gap-10">
+                    <div className="flex flex-col">
                       <ParallaxHover>
                         <ProfileCard />
                       </ParallaxHover>
-                      <ParallaxHover>
-                        <AboutMeSection />
-                      </ParallaxHover>
                     </div>
 
-                    <div className="max-w-210">
-                      <EducationSection />
-                      <ExperienceSection />
-                      <ProjectsSection />
+                    <div className="flex gap-10">
+                      <div>
+                        <EducationSection />
+                        <ExperienceSection />
+                        <ProjectsSection />
+                      </div>
+                      {/* <ParallaxHover>
+                        <AboutMeSection />
+                      </ParallaxHover> */}
                     </div>
                 </div>
             </div>

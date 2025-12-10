@@ -12,7 +12,7 @@ export default function AboutMeSection() {
 
             {/* MAIN CARD */}
             <div
-                className="card-styles text-left lg:max-w-[386px]"
+                className="card-styles text-left lg:max-w-2xl"
             >
                 {/* VERSION LABEL */}
                 <p className="text-[10px] text-pink-200/80 tracking-wide mb-2">

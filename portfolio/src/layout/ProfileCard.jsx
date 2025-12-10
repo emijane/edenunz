@@ -1,4 +1,5 @@
 import icon from '../assets/icon.jpg';
+import cover from '../assets/cover-photo.jpg';
 import { Linkedin, Instagram, Github, Mail } from "lucide-react";
 import TechIcons from '../components/ui/tech-icons';
 import SpotifyWidget from '../components/SpotifyWidget';
@@ -14,63 +15,60 @@ export default function ProfileCard() {
             <div className="card-highlight" />
 
             {/* MAIN CARD */}
-            <div className="card-styles w-full">
-                <div className="flex flex-col sm:flex-row items-center gap-7 relative">
+            <div className="card-styles w-full pt-40 pb-10 relative">
 
-                    {/* AVATAR + orbit icons wrapper */}
-                    <div className="relative w-fit mx-auto">
+                {/* COVER PHOTO */}
+                <div className="absolute inset-0 w-full h-28 sm:h-32 lg:h-36 overflow-hidden rounded-t-3xl">
+                    <img
+                        src={cover}
+                        alt="Cover Photo"
+                        className="w-full h-full object-cover opacity-70"
+                    />
+                </div>
+
+                {/* CONTENT WRAPPER */}
+                <div className="flex flex-col gap-3 relative z-10">
+
+                    {/* AVATAR */}
+                    <div className="relative w-fit -mt-20 z-10">
                         <img
                             src={icon}
-                            alt="Icon"
+                            alt="Avatar"
                             className="
-                                w-24 lg:w-28 rounded-full
+                                w-24 lg:w-30 rounded-full
                                 shadow-[0_0_25px_rgba(255,255,255,0.18)]
+                                border-2 border-white/20
                             "
                         />
-
-                        {/* Orbiting icons positioned relative to THIS wrapper */}
-                        <TechIcons />
                     </div>
 
                     {/* TEXT BLOCK */}
-                    <div className="text-left flex flex-col sm:items-start items-center">
+                    <div className="text-left flex flex-col">
                         <div className="flex items-center gap-2">
-                            <h1
-                                className="
-                                    text-xl font-semibold text-white tracking-wide
-                                    drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]
-                                "
-                            >
-                                emma denunzio
+                            <h1 className="text-xl font-semibold text-white tracking-wide drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]">
+                                Emma DeNunzio
                             </h1>
-
-                            <span className="text-pink-300 text-xs animate-pulse-slow">
-                                ✦
-                            </span>
+                            <span className="text-pink-300 text-xs animate-pulse-slow">✦</span>
                         </div>
 
                         <p className="text-xs text-pink-200/80 tracking-wide mt-1">
-                            jr frontend developer
+                            Frontend Developer
                         </p>
 
                         <div className="flex flex-row gap-3 mt-3">
                             {[Linkedin, Instagram, Github, Mail].map((Icon, i) => (
                                 <Icon
                                     key={i}
-                                    className="
-                                        text-white/70 w-4 h-4
-                                        transition-all duration-300
-                                        hover:text-white hover:scale-[1.18]
-                                        cursor-pointer
-                                        drop-shadow-[0_0_6px_rgba(255,255,255,0.3)]
-                                    "
+                                    className="text-white/70 w-4 h-4 transition-all duration-300 hover:text-white hover:scale-[1.18] cursor-pointer drop-shadow-[0_0_6px_rgba(255,255,255,0.3)]"
                                 />
                             ))}
                         </div>
                     </div>
                 </div>
+
                 <SpotifyWidget />
             </div>
         </div>
     );
 }
+
