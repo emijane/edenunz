@@ -2,7 +2,6 @@
 import { cn } from "@/lib/utils";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
-// Make layers stable across renders
 const LAYERS = [
     { density: 0.00010, speed: 0.15, size: 0.7 },
     { density: 0.00006, speed: 0.25, size: 1.0 },
@@ -11,9 +10,8 @@ const LAYERS = [
 
 export const StarsBackground = ({ className }) => {
     const canvasRef = useRef(null);
-    const nebulaCanvasRef = useRef(null); // offscreen buffer
+    const nebulaCanvasRef = useRef(null);
 
-    // Generate star layers
     const generateLayer = useCallback((width, height, density, sizeMult) => {
         const num = Math.floor(width * height * density);
 
@@ -43,7 +41,39 @@ export const StarsBackground = ({ className }) => {
 
     const [stars, setStars] = useState([]);
 
-    // Resize handler — regenerates stars + nebula on viewport size change
+    // COLOR PALETTES
+    const LEFT_NEBULA_COLORS = {
+        inner: "rgba(187, 84, 255,0.01)",   // soft pink / lavender
+        mid:   "rgba(145, 15, 67,0.2)",   // violet
+        outer: "rgba(0,0,0,0)",
+    };
+
+    const RIGHT_NEBULA_COLORS = {
+        inner: "rgba(22, 16, 1455,0.01)",   // baby blue
+        mid:   "rgba(120,180,255,0.1)",   // sky blue
+        outer: "rgba(0,0,0,0)",
+    };
+
+    // Paint nebula with configurable colors
+    const paintNebula = (ctx, cxInner, cyInner, cxOuter, cyOuter, radius, colors) => {
+        const g = ctx.createRadialGradient(
+            cxInner,
+            cyInner,
+            0,
+            cxOuter,
+            cyOuter,
+            radius
+        );
+
+        g.addColorStop(0, colors.inner);
+        g.addColorStop(0.5, colors.mid);
+        g.addColorStop(1, colors.outer);
+
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    };
+
+    // Resize → generate stars + nebulas
     useEffect(() => {
         const update = () => {
             const canvas = canvasRef.current;
@@ -59,107 +89,97 @@ export const StarsBackground = ({ className }) => {
             nebulaCanvas.width = width;
             nebulaCanvas.height = height;
 
-            // regenerate stars
             setStars(
                 LAYERS.map((layer) =>
                     generateLayer(width, height, layer.density, layer.size)
                 )
             );
 
-            // redraw nebula ONCE per resize
             const nctx = nebulaCanvas.getContext("2d");
             nctx.clearRect(0, 0, width, height);
-
             nctx.globalCompositeOperation = "lighter";
-
-            const paintNebula = (cxInner, cyInner, cxOuter, cyOuter, outerRadius) => {
-                const g = nctx.createRadialGradient(
-                    cxInner,
-                    cyInner,
-                    0,
-                    cxOuter,
-                    cyOuter,
-                    outerRadius
-                );
-
-                g.addColorStop(0, "rgba(251,207,232,0.04)"); // soft pink core
-                g.addColorStop(0.5, "rgba(212,109,191,0.08)");
-                g.addColorStop(1, "rgba(0,0,0,0)");
-
-                nctx.fillStyle = g;
-                nctx.fillRect(0, 0, width, height);
-            };
 
             const isMobile = width < 768;
 
             if (isMobile) {
-                // Left nebula (top-left-ish)
+                // left
                 paintNebula(
+                    nctx,
                     width * 0.15,
                     height * 0.25,
                     width * 0.30,
                     height * 0.22,
-                    width * 0.7
+                    width * 0.7,
+                    LEFT_NEBULA_COLORS
                 );
-                // Right nebula (top-right-ish)
+                // right
                 paintNebula(
+                    nctx,
                     width * 0.80,
                     height * 0.30,
                     width * 0.90,
                     height * 0.26,
-                    width * 0.7
+                    width * 0.7,
+                    RIGHT_NEBULA_COLORS
                 );
             } else {
-                // Desktop left nebula
+                // Desktop left (pink/purple)
                 paintNebula(
+                    nctx,
                     width * 0.10,
-                    height * 0.28,
+                    height * 0.85,
                     width * 0.28,
-                    height * 0.18,
-                    width * 0.55
-                );
-                // Desktop right nebula
-                paintNebula(
-                    width * 0.80,
                     height * 0.22,
+                    width * 0.55,
+                    LEFT_NEBULA_COLORS
+                );
+
+                // Desktop right (blue)
+                paintNebula(
+                    nctx,
+                    width * 0.90,
+                    height * 0.12,
                     width * 0.60,
                     height * 0.16,
-                    width * 0.55
+                    width * 0.55,
+                    RIGHT_NEBULA_COLORS
                 );
             }
+
+            // vignette burn
+            nctx.globalCompositeOperation = "multiply";
+
+            const vignette = nctx.createRadialGradient(
+                width / 2,
+                height / 2,
+                0,
+                width / 2,
+                height / 2,
+                width * 0.9
+            );
+
+            vignette.addColorStop(0, "rgba(0,0,0,0)");
+            vignette.addColorStop(0.6, "rgba(0,0,0,0.25)");
+            vignette.addColorStop(1, "rgba(0,0,0,0.75)");
+
+            nctx.fillStyle = vignette;
+            nctx.fillRect(0, 0, width, height);
 
             nctx.globalCompositeOperation = "source-over";
         };
 
         update();
         window.addEventListener("resize", update);
-
         return () => window.removeEventListener("resize", update);
     }, [generateLayer]);
 
-    // Draw ✦ shape
-    const drawStarShape = (ctx, x, y, size) => {
-        ctx.save();
-        ctx.translate(x, y);
-
-        ctx.beginPath();
-        ctx.moveTo(0, -size * 2);
-        ctx.lineTo(0, size * 2);
-        ctx.moveTo(-size * 2, 0);
-        ctx.lineTo(size * 2, 0);
-
-        ctx.stroke();
-        ctx.restore();
-    };
-
-    // Animation loop — ONLY stars animate
+    // stars animate
     useEffect(() => {
         const canvas = canvasRef.current;
         const nebulaCanvas = nebulaCanvasRef.current;
         if (!canvas || !nebulaCanvas || stars.length === 0) return;
 
         const ctx = canvas.getContext("2d");
-
         let frame;
 
         const loop = () => {
@@ -177,7 +197,8 @@ export const StarsBackground = ({ className }) => {
                     const twinkle =
                         Math.sin(time * star.twinkleSpeed + star.phase) * 0.4 + 0.6;
 
-                    const opacity = star.baseOpacity * fade + twinkle * 0.5;
+                    let opacity = (star.baseOpacity * fade + twinkle * 0.5) * 1.15;
+                    if (opacity > 1) opacity = 1;
 
                     star.x += depth * 0.15;
                     star.y += depth * 0.05;
@@ -190,7 +211,12 @@ export const StarsBackground = ({ className }) => {
                     ctx.strokeStyle = `${star.color}, ${opacity})`;
                     ctx.lineWidth = star.size * 0.6;
 
-                    drawStarShape(ctx, star.x, star.y, star.size);
+                    ctx.beginPath();
+                    ctx.moveTo(star.x, star.y - star.size * 2);
+                    ctx.lineTo(star.x, star.y + star.size * 2);
+                    ctx.moveTo(star.x - star.size * 2, star.y);
+                    ctx.lineTo(star.x + star.size * 2, star.y);
+                    ctx.stroke();
                 });
             });
 
@@ -203,13 +229,10 @@ export const StarsBackground = ({ className }) => {
 
     return (
         <>
-            {/* static glow buffer */}
             <canvas
                 ref={nebulaCanvasRef}
                 className="fixed inset-0 w-screen h-screen pointer-events-none"
             />
-
-            {/* star animation */}
             <canvas
                 ref={canvasRef}
                 className={cn(

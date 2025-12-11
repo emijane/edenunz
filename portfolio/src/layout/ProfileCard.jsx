@@ -29,8 +29,11 @@ export default function ProfileCard() {
                             src={icon}
                             alt="Avatar"
                             className="
-                                w-24 lg:w-40 rounded-full
-                                border-5 border-black
+                                w-24 lg:w-40
+                                aspect-square
+                                rounded-full
+                                object-cover
+                                border-4 border-black
                             "
                         />
                     </div>
