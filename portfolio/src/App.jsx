@@ -22,8 +22,9 @@ function App() {
                     <ParallaxHover>
                         <ProfileCard />
                     </ParallaxHover>
-
-                    <ExperienceSection />
+                    <ParallaxHover>
+                        <ExperienceSection />
+                    </ParallaxHover>
                     <ProjectsSection />
                 </div>
 

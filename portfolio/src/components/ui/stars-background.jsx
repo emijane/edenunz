@@ -44,7 +44,7 @@ export const StarsBackground = ({ className }) => {
     // COLOR PALETTES
     const LEFT_NEBULA_COLORS = {
         inner: "rgba(187, 84, 255,0.01)",   // soft pink / lavender
-        mid:   "rgba(255, 128, 179,0.2)",   // violet
+        mid:   "rgba(255, 128, 179,0.3)",   // violet
         outer: "rgba(0,0,0,0)",
     };
 
