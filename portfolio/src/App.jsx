@@ -25,7 +25,9 @@ function App() {
                     <ParallaxHover>
                         <ExperienceSection />
                     </ParallaxHover>
-                    <ProjectsSection />
+                    <ParallaxHover>
+                        <ProjectsSection />
+                    </ParallaxHover>
                 </div>
 
                 <div className="flex flex-col gap-3">

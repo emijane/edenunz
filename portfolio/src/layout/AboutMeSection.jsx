@@ -6,7 +6,7 @@ export default function AboutMeSection() {
 
             {/* MAIN CARD */}
             <div
-                className="card-black text-left lg:max-w-2xl"
+                className="card-black text-left lg:max-w-2xl hover:scale-[1.02] transition-transform duration-200"
             >
                 {/* VERSION LABEL */}
                 <p className="text-[10px] text-pink-200/80 tracking-wide mb-2">
